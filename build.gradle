@@ -2,10 +2,10 @@ plugins {
     id 'java'
     id 'eclipse'
     id 'idea'
-    id 'io.franzbecker.gradle-lombok' version '1.14'
     id "org.springframework.boot" version "2.1.1.RELEASE"
     id "io.spring.dependency-management" version "1.0.6.RELEASE"
 }
+
 
 bootJar {
     baseName = 'gs-rest-service'
@@ -19,8 +19,13 @@ repositories {
 sourceCompatibility = 1.11
 targetCompatibility = 1.11
 
+def lombokVersion = "1.18.4"
+
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
     compile("org.springframework.boot:spring-boot-starter-actuator")
     testCompile('org.springframework.boot:spring-boot-starter-test')
+
+    annotationProcessor "org.projectlombok:lombok:$lombokVersion"
+    implementation "org.projectlombok:lombok:$lombokVersion"
 }
